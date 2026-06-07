@@ -1,8 +1,8 @@
 [
-    { "Id": "rbxassetid://121433970011406" },
-    { "Id": "rbxassetid://108390731613171" },
-    { "Id": "rbxassetid://99617596821002" },
-    { "Id": "rbxassetid://110780812671508" },
-    { "Id": "rbxassetid://91178769089891" },
-    { "Id": "rbxassetid://119027124374460" }
+    { "Name": "mercenaries",    "Id": "rbxassetid://121433970011406" },
+    { "Name": "idk",    "Id": "rbxassetid://108390731613171" },
+    { "Name": "meowsome", "Id": "rbxassetid://99617596821002"  },
+    { "Name": "guts",       "Id": "rbxassetid://110780812671508" },
+    { "Name": "wave",     "Id": "rbxassetid://91178769089891"  },
+    { "Name": "adawong",     "Id": "rbxassetid://119027124374460" }
 ]
