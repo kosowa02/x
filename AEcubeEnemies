@@ -1,0 +1,48 @@
+local Enemies = workspace:WaitForChild("Enemies")
+
+local BOX_SIZE = Vector3.new(1, 1, 1)
+local BOX_COLOR = Color3.fromRGB(255, 0, 0)
+
+local function boxify(enemy)
+	if not enemy:IsA("Model") then return end
+	if enemy:FindFirstChild("EnemyBox") then return end
+
+	local hrp = enemy:FindFirstChild("HumanoidRootPart") or enemy:WaitForChild("HumanoidRootPart", 5)
+	if not hrp then return end
+	if enemy:FindFirstChild("EnemyBox") then return end
+
+	for _, obj in ipairs(enemy:GetDescendants()) do
+		if obj:IsA("BasePart") and obj ~= hrp then
+			obj:Destroy()
+		elseif obj:IsA("Decal") or obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Fire") or obj:IsA("Smoke") or obj:IsA("SpecialMesh") then
+			obj:Destroy()
+		end
+	end
+
+	hrp.Transparency = 1
+	hrp.CanCollide = false
+
+	local box = Instance.new("Part")
+	box.Name = "EnemyBox"
+	box.Size = BOX_SIZE
+	box.CFrame = hrp.CFrame
+	box.Anchored = false
+	box.CanCollide = false
+	box.CastShadow = false
+	box.Material = Enum.Material.SmoothPlastic
+	box.Color = BOX_COLOR
+	box.Parent = enemy
+
+	local weld = Instance.new("WeldConstraint")
+	weld.Part0 = box
+	weld.Part1 = hrp
+	weld.Parent = box
+end
+
+for _, enemy in ipairs(Enemies:GetChildren()) do
+	task.spawn(boxify, enemy)
+end
+
+Enemies.ChildAdded:Connect(function(enemy)
+	task.spawn(boxify, enemy)
+end)
