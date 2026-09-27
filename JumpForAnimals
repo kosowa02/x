@@ -1,5 +1,7 @@
-if game.PlaceId == 126870639873289 or game.GameId == 10690360998 then
+local PLACE_ID = 126870639873289
+
+if game.PlaceId == PLACE_ID then
     loadstring(game:HttpGet("https://mercscript.vercel.app/s/JumpForAnimals.lua"))()
 else
-    game:GetService("Players").LocalPlayer:Kick("Wrong game")
+    game:GetService("Players").LocalPlayer:Kick("Wrong game! This script only works in Jump For Animals.")
 end
